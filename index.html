@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>우리 반 포인트</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">오늘도 즐거운 우리 반</p>
+      <h1>우리 반 포인트</h1>
+      <p>칭찬과 노력에 포인트를 선물해요!</p>
+    </header>
+
+    <section class="add-panel" aria-labelledby="add-title">
+      <h2 id="add-title">학생 추가</h2>
+      <form id="student-form" class="student-form">
+        <label class="sr-only" for="student-name">학생 이름</label>
+        <input id="student-name" name="studentName" type="text" maxlength="30" placeholder="학생 이름을 입력하세요" autocomplete="off">
+        <button type="submit">학생 추가</button>
+      </form>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="stats" aria-label="학급 통계">
+      <article class="stat-card"><span>총 학생 수</span><strong id="student-count">0명</strong></article>
+      <article class="stat-card"><span>전체 포인트</span><strong id="total-points">0점</strong></article>
+    </section>
+
+    <section class="list-panel" aria-labelledby="list-title">
+      <div class="panel-heading">
+        <h2 id="list-title">학생 포인트</h2>
+        <button id="reset-button" class="reset-button" type="button">전체 점수 초기화</button>
+      </div>
+      <div id="loading" class="loading" hidden>데이터를 불러오는 중이에요…</div>
+      <div id="student-list" class="student-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="setup-guide" aria-labelledby="setup-title">
+      <h2 id="setup-title">처음 한 번만 설정해 주세요</h2>
+      <ol>
+        <li><strong>data.xlsx</strong>를 Google Drive에 올린 뒤 파일을 열고 <strong>Google 스프레드시트로 저장</strong>합니다.</li>
+        <li>스프레드시트 주소의 <code>/d/</code>와 <code>/edit</code> 사이 값을 복사해 <strong>Code.gs</strong>의 <code>SPREADSHEET_ID</code>에 붙여 넣습니다.</li>
+        <li>스프레드시트에서 <strong>확장 프로그램 → Apps Script</strong>를 열고 <strong>Code.gs</strong> 전체를 붙여 넣습니다.</li>
+        <li><strong>배포 → 새 배포 → 웹 앱</strong>에서 실행 사용자는 ‘나’, 액세스 권한은 학생들이 사용할 수 있도록 설정한 뒤 배포합니다. 처음에는 권한을 승인합니다.</li>
+        <li>배포 화면의 웹 앱 URL(끝이 <code>/exec</code>)을 <strong>script.js</strong>의 <code>APPS_SCRIPT_WEB_APP_URL</code>에 붙여 넣고 저장합니다.</li>
+      </ol>
+      <p class="guide-note">로컬에서 index.html을 바로 열 수 있지만, 브라우저 보안 정책 때문에 Apps Script 호출이 차단되면 Chrome에서 파일 접근을 허용하거나 정적 웹 호스팅에 올려 사용해 주세요. URL을 바꾼 뒤에는 새로고침합니다.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
